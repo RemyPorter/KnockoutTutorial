@@ -1,0 +1,26 @@
+<html>
+	<head><title>Basic Cupcake View</title>
+		<script type="text/javascript" src="../knockout-2.2.1.js"></script>
+		<script type="text/javascript" src="cupcake.js"></script>
+	</head>
+<body>
+	<div id="KnockoutCupcake">
+		<table data-bind="foreach: Cupcakes">
+			<tr>
+				<td><span data-bind="CakeFlavor"></span></td>
+				<td><span data-bind="IcingFlavor"></span></td>
+				<td><span data-bind="Decoration"></span></td>
+			</tr>
+		</table>
+		<div>
+			<label for="NewCakeFlavor">Cake:</label><input type="text" id="NewCakeFlavor" data-bind="text: NewCake.CakeFlavor" />
+			<label for="NewIcingFlavor">Icing:</label><input type="text" id="NewIcingFlavor" data-bind="text: NewCake.IcingFlavor" />
+			<label for="NewDecoration">Decoration:</label><input type="text" id="NewDecoration" data-bind="text: NewCake.CakeDecoration" />
+			<button data-bind="click: AddCake">Add Cake</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	ko.applyBindings(vm, document.getElementById("KnockoutCupcake"));
+</script>
+</html>

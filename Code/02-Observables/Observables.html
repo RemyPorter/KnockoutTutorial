@@ -1,0 +1,19 @@
+<html>
+	<head><title>Basic Cupcake View</title>
+		<script type="text/javascript" src="../knockout-2.2.1.js"></script>
+		<script type="text/javascript" src="cupcake.js"></script>
+	</head>
+<body>
+	<div id="KnockoutCupcake" class="PostDemo">
+		<!-- Note how I walk down the property tree- Property.Observable -->
+		Cake: <span data-bind="text: Cupcake.CakeFlavor"></span><br />
+		Icing: <span data-bind="text: Cupcake.IcingFlavor"></span><br />
+		Decoration: <span data-bind="text: Cupcake.Decoration"></span><br />
+		<!-- A new data-binding- click -->
+		<button data-bind="click: ChangeCakeFlavor">Toggle Cake Flavor</button>
+	</div>
+</body>
+<script type="text/javascript">
+	ko.applyBindings(vm, document.getElementById("KnockoutCupcake"));
+</script>
+</html>

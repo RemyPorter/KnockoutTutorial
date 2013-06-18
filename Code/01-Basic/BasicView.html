@@ -1,0 +1,22 @@
+<html>
+	<head><title>Basic Cupcake View</title>
+		<script type="text/javascript" src="../knockout-2.2.1.js"></script>
+		<script type="text/javascript" src="cupcake.js"></script>
+	</head>
+<body>
+	<!-- What it might look like -->
+	<div id="Cupcake" class="PreDemo">
+		Cake: <span>Cake Flavor Goes Here</span><br />
+		Icing: <span>Icing Flavor Goes Here</span><br />
+		Decoration: <span>Decoration Info Goes Here</span><br />
+	</div>
+	<div id="KnockoutCupcake" class="PostDemo">
+		Cake: <span data-bind="text: CakeFlavor"></span><br />
+		Icing: <span data-bind="text: IcingFlavor"></span><br />
+		Decoration: <span data-bind="text: Decoration"></span><br />
+	</div>
+</body>
+<script type="text/javascript">
+	ko.applyBindings(BasicCupcake, document.getElementById("KnockoutCupcake"));
+</script>
+</html>
