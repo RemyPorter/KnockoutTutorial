@@ -1,5 +1,5 @@
 <html>
-	<head><title>Observable Cupcake Arrays</title>
+	<head><title>Dropping Down the Cupcakes</title>
 		<script type="text/javascript" src="../knockout-2.2.1.js"></script>
 		<script type="text/javascript" src="cupcake.js"></script>
 	</head>
@@ -10,7 +10,7 @@
 				<tr> 
 					<td><span data-bind="text: CakeFlavor"></span></td>
 					<td><span data-bind="text: IcingFlavor"></span></td>
-					<td><span data-bind="text: Decoration"></span></td>
+					<td><span data-bind="text: Decoration().Name"></span></td>
 				</tr>
 			</tbody>
 		</table>
@@ -20,7 +20,7 @@
 			<label for="NewIcingFlavor">Icing:</label>
 				<select id="NewIcingFlavor" data-bind="optionsCaption:'Select a flavor', options: $root.Flavors, value: IcingFlavor"></select>
 			<label for="NewDecoration">Decoration:</label>
-				<select id="NewDecoration" data-bind="optionsCaption:'Select a decoration', options: $root.Decorations, value: Decoration"></select>
+				<select id="NewDecoration" data-bind="optionsCaption:'Select a decoration', options: $root.Decorations, optionsText: 'Name', value: Decoration"></select>
 			<button data-bind="click: $parent.AddCake">Add Cake</button>
 		</div>
 	</div>
