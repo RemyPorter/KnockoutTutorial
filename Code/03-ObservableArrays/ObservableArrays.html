@@ -5,19 +5,23 @@
 	</head>
 <body>
 	<div id="KnockoutCupcake">
-		<table data-bind="foreach: Cupcakes">
-			<tr>
-				<td><span data-bind="CakeFlavor"></span></td>
-				<td><span data-bind="IcingFlavor"></span></td>
-				<td><span data-bind="Decoration"></span></td>
-			</tr>
+		<table>
+			<tbody data-bind="foreach: Cupcakes"> <!-- Do a for-each loop. Note: it repeats the entire content of this element, NOT this element -->
+				<tr>
+					<td><span data-bind="text: CakeFlavor"></span></td>
+					<td><span data-bind="text: IcingFlavor"></span></td>
+					<td><span data-bind="text: Decoration"></span></td>
+				</tr>
+			</tbody>
 		</table>
-		<div>
-			<label for="NewCakeFlavor">Cake:</label><input type="text" id="NewCakeFlavor" data-bind="text: NewCake.CakeFlavor" />
-			<label for="NewIcingFlavor">Icing:</label><input type="text" id="NewIcingFlavor" data-bind="text: NewCake.IcingFlavor" />
-			<label for="NewDecoration">Decoration:</label><input type="text" id="NewDecoration" data-bind="text: NewCake.CakeDecoration" />
-			<button data-bind="click: AddCake">Add Cake</button>
+		<div data-bind="with: NewCake"> <!-- Look, another new binding. This one makes it easy to drill down the list -->
+			<label for="NewCakeFlavor">Cake:</label><input type="text" id="NewCakeFlavor" data-bind="value: CakeFlavor" /> <!-- And this is how you'll usually bind to form fields. -->
+			<label for="NewIcingFlavor">Icing:</label><input type="text" id="NewIcingFlavor" data-bind="value: IcingFlavor" />
+			<label for="NewDecoration">Decoration:</label><input type="text" id="NewDecoration" data-bind="value: Decoration" />
+			<!-- Or, slightly better version -->
+			<!-- <button data-bind="click: $parent.AddCake">Add Cake</button> -->
 		</div>
+		<button data-bind="click: AddCake">Add Cake</button>
 	</div>
 </body>
 <script type="text/javascript">
