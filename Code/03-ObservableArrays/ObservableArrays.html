@@ -1,5 +1,5 @@
 <html>
-	<head><title>Basic Cupcake View</title>
+	<head><title>Observable Cupcake Arrays</title>
 		<script type="text/javascript" src="../knockout-2.2.1.js"></script>
 		<script type="text/javascript" src="cupcake.js"></script>
 	</head>
@@ -7,19 +7,20 @@
 	<div id="KnockoutCupcake">
 		<table>
 			<tbody data-bind="foreach: Cupcakes"> <!-- Do a for-each loop. Note: it repeats the entire content of this element, NOT this element -->
-				<tr>
+				<tr> <!-- It also changes the binding context. Note how I can refer to the properties of a Cupcake object. -->
 					<td><span data-bind="text: CakeFlavor"></span></td>
 					<td><span data-bind="text: IcingFlavor"></span></td>
 					<td><span data-bind="text: Decoration"></span></td>
 				</tr>
 			</tbody>
 		</table>
-		<div data-bind="with: NewCake"> <!-- Look, another new binding. This one makes it easy to drill down the list -->
+		<div data-bind="with: NewCake"> <!-- Look, another new binding. Like "foreach", this changes the binding context. -->
 			<label for="NewCakeFlavor">Cake:</label><input type="text" id="NewCakeFlavor" data-bind="value: CakeFlavor" /> <!-- And this is how you'll usually bind to form fields. -->
 			<label for="NewIcingFlavor">Icing:</label><input type="text" id="NewIcingFlavor" data-bind="value: IcingFlavor" />
 			<label for="NewDecoration">Decoration:</label><input type="text" id="NewDecoration" data-bind="value: Decoration" />
 			<!-- Or, slightly better version -->
 			<!-- <button data-bind="click: $parent.AddCake">Add Cake</button> -->
+			<!-- The $parent variable walks one level back up the binding context -->
 		</div>
 		<button data-bind="click: AddCake">Add Cake</button>
 	</div>
