@@ -19,9 +19,14 @@ var CupcakeVM = function()  {
 var GlobalVM = function() {
 	this.Cupcakes = ko.observableArray([]);
 	this.NewCake = new CupcakeVM();
-	this.AddCake = function() {
+	var self = this;
+	this.AddCake = function() { //this always points to the VM in the binding context
 		this.Cupcakes.push(this.NewCake.Copy());
 		this.NewCake.Clear();
+	}
+	this.BetterAddCake = function() { //which, in this case, is a cupcake
+		self.Cupcakes.push(this.Copy());
+		self.NewCake.Clear();
 	}
 }
 var vm = new GlobalVM();
