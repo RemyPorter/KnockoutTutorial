@@ -1,5 +1,5 @@
 <html>
-	<head><title>Dropping Down the Cupcakes</title>
+	<head><title>Appearance Cupcakes</title>
 		<script type="text/javascript" src="../knockout-2.2.1.js"></script>
 		<script type="text/javascript" src="cupcake.js"></script>
 	</head>
@@ -14,8 +14,8 @@
 				</tr>
 			</tbody>
 		</table>
-		<div data-bind="with: NewCake"> 
-			<span>
+		<div data-bind="with: NewCake, style: {'border': '1px solid '+($root.CanAdd()?'blue':'red')}"> 
+			<span data-bind="css: CakeFlavor() != null?'picked':'notpicked'"> <!-- set the CSS class -->
 				<label for="NewCakeFlavor">Cake:</label>
 					<select id="NewCakeFlavor" data-bind="optionsCaption:'Select a flavor', options: $root.Flavors, value: CakeFlavor"></select> 
 			</span>
