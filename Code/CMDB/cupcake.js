@@ -1,3 +1,4 @@
+
 var CupcakeVM = function()  {
 	this.CakeFlavor = ko.observable(null);
 	this.IcingFlavor = ko.observable(null);
@@ -51,3 +52,10 @@ var GlobalVM = function() {
 	}
 }
 var vm = new GlobalVM();
+
+ko.bindingHandlers.cake = {
+	update: function(element, valueAccessor, allBindingsAccessor) {
+		var valueWrapped = valueAccessor(); var bindings = allBindingsAccessor();
+		var value = ko.utils.unwrapObservable(valueWrapped);
+	}
+}
