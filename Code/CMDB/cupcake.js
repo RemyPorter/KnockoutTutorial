@@ -53,9 +53,15 @@ var GlobalVM = function() {
 }
 var vm = new GlobalVM();
 
-ko.bindingHandlers.cake = {
+ko.bindingHandlers.flavor = {
 	update: function(element, valueAccessor, allBindingsAccessor) {
 		var valueWrapped = valueAccessor(); var bindings = allBindingsAccessor();
 		var value = ko.utils.unwrapObservable(valueWrapped);
+		var imageRoot = bindings.imageRoot || "..Images/";
+		var imageType = bindings.type || "cake";
+		if (value) {
+			var imageUrl = imageRoot + imageType + '.' + value.toLowerCase() + '.png';
+			element.src = imageUrl;
+		}
 	}
 }
