@@ -2,6 +2,7 @@
 	<head><title>Cupcake Management Database</title>
 		<script type="text/javascript" src="../knockout-2.2.1.js"></script>
 		<script type="text/javascript" src="cupcake.js"></script>
+		<link rel="stylesheet" href="CMDB.css" type="text/css" />
 	</head>
 <body>
 	<div id="KnockoutCupcake">
@@ -14,15 +15,17 @@
 				</tr>
 			</tbody>
 		</table>
-		<aside data-bind="with: NewCake">
-			<ul>
+		<aside data-bind="with: NewCake" style="float: right">
+			<ul class="cake-display">
 				<li name="decoration">
 				</li>
 				<li name="icing">
-					<img src="../Images/transparent.gif"
-						data-bind="attr: {src: $root.ImagifyIcing($data.IcingFlavor())}" />
+					<img src="../Images/transparent.gif" width="320"
+						data-bind="flavor: IcingFlavor, type: 'icing'" />
 				</li>
-				<li name="cake">
+				<li class="cake">
+					<img src="../Images/transparent.gif" width="320"
+						data-bind="flavor: CakeFlavor, type: 'cake'" />
 				</li>
 			</ul>
 		</aside>

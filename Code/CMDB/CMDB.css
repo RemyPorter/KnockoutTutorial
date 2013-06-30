@@ -1,0 +1,10 @@
+.cake-display {
+	position: relative;
+}
+.cake-display > li {
+	position: relative;
+	list-style-type: none;
+}
+.cake-display > li.cake {
+	top: -30px;
+}
