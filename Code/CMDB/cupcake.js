@@ -59,6 +59,8 @@ ko.bindingHandlers.flavor = {
 		if (value) {
 			var imageUrl = imageRoot + imageType + '.' + value.toLowerCase() + '.png';
 			element.src = imageUrl.replace(' ', '');
+		} else {
+			element.src = imageRoot + "transparent.gif"
 		}
 	}
 }
@@ -71,6 +73,8 @@ ko.bindingHandlers.decoration = {
 		if (deco) {
 			var imageUrl = imageRoot + "deco." + deco.tag + ".png";
 			element.src = imageUrl.replace(' ', '');
+		}  else {
+			element.src = imageRoot + "transparent.gif"
 		}
 	}
 }

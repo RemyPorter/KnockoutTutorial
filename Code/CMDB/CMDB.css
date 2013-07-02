@@ -14,3 +14,9 @@
 .cake-display > li.cake {
 	top: -300px;
 }
+tr {
+	background-color: #F0F0F0;
+}
+tr:nth-child(odd) {
+	background-color: #DDF0F0;
+}
