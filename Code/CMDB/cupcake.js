@@ -22,10 +22,10 @@ var GlobalVM = function() {
 		"Bacon", "Sriracha"]);
 	//Decorations will be a custom object
 	this.Decorations = ko.observableArray([
-		{Id: ko.observable(1), Name: ko.observable("Sprinkles")}, //since these don't change, they don't technically need to be observables
-		{Id: ko.observable(2), Name: ko.observable("Colored Sugar")}, 
-		{Id: ko.observable(3), Name: ko.observable("Bacon Bits")}, 
-		{Id: ko.observable(4), Name: ko.observable("Plastic Mustache")}]);
+		{Id: ko.observable(1), Name: ko.observable("Sprinkles"), tag: "sprinkles"}, //since these don't change, they don't technically need to be observables
+		{Id: ko.observable(2), Name: ko.observable("Colored Sugar"), tag: "sugar"}, 
+		{Id: ko.observable(3), Name: ko.observable("Bacon Bits"), tag: "bacon"}, 
+		{Id: ko.observable(4), Name: ko.observable("Plastic Mustache"), tag: "mustache"}]);
 	this.Cupcakes = ko.observableArray([]);
 	this.NewCake = ko.observable(new CupcakeVM());
 
@@ -58,6 +58,18 @@ ko.bindingHandlers.flavor = {
 		var imageType = bindings.type || "cake";
 		if (value) {
 			var imageUrl = imageRoot + imageType + '.' + value.toLowerCase() + '.png';
+			element.src = imageUrl.replace(' ', '');
+		}
+	}
+}
+
+ko.bindingHandlers.decoration = {
+	update: function(element, valueAccessor, allBindingsAccessor) {
+		var deco = ko.utils.unwrapObservable(valueAccessor());
+		var bindings = allBindingsAccessor();
+		var imageRoot = bindings.imageRoot || "../Images/";
+		if (deco) {
+			var imageUrl = imageRoot + "deco." + deco.tag + ".png";
 			element.src = imageUrl.replace(' ', '');
 		}
 	}

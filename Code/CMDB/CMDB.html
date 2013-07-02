@@ -8,10 +8,14 @@
 	<section id="KnockoutCupcake">
 		<aside data-bind="with: NewCake" style="float: right">
 			<ul class="cake-display">
-				<li name="decoration">
-				</li>
-				<li name="icing">
+				<li class="decoration">
 					<img src="../Images/transparent.gif" width="320"
+						height="269"
+						data-bind="decoration: Decoration" />
+				</li>
+				<li class="icing">
+					<img src="../Images/transparent.gif" width="320"
+						height="269"
 						data-bind="flavor: IcingFlavor, type: 'icing'" />
 				</li>
 				<li class="cake">

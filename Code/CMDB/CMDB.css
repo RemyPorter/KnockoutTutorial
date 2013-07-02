@@ -5,6 +5,12 @@
 	position: relative;
 	list-style-type: none;
 }
+.cake-display > li.decoration {
+	z-index: 100;
+}
+.cake-display > li.icing {
+	top: -269px;
+}
 .cake-display > li.cake {
-	top: -30px;
+	top: -300px;
 }
