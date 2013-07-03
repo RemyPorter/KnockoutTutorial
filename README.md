@@ -19,3 +19,5 @@ The presentation and the code use a variety of images which I did not create. I 
 * [Cupcake Lineart](http://alw4ys-m3.deviantart.com/art/Cupcake-lineart-179809777) - Alw4ys-M3 (CC-BY-NC 3.0)
 * [Schweinbauch](http://commons.wikimedia.org/wiki/File:Schweinebauch-1.jpg) - Rainer Zenz (CC-BY-SA-3.0)
 * [Schriracha Sauce](http://commons.wikimedia.org/wiki/File:Sriracha_sauce.JPG) - Glane23 (CC-BY-SA-3.0)
+
+This tutorial is protected under the GPLv3 license.
