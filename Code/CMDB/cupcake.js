@@ -1,4 +1,9 @@
 
+var CupcakesJSON = {
+	cakes: [
+		{Cake: "Bacon", Icing: "Chocolate", Decoration: 1}
+	]
+}
 var CupcakeVM = function()  {
 	this.CakeFlavor = ko.observable(null);
 	this.IcingFlavor = ko.observable(null);
@@ -47,6 +52,7 @@ var GlobalVM = function() {
 
 	this.RemoveCake = function(cake) {
 		self.Cupcakes.splice(self.Cupcakes.indexOf(cake), 1);
+		self.StopPreview();
 	}
 
 	this.previewTimeout = null;
@@ -61,10 +67,21 @@ var GlobalVM = function() {
 	this.StopPreview = function() {
 		self.previewTimeout = setTimeout(function() {
 			self.ViewCake(self.NewCake());
-		}, 500);
+		}, 300);
+	}
+
+	this.LoadJSON = function(json) {
+		for (var i = 0; i < json.cakes.length; i++) {
+			var cake = new CupcakeVM();
+			cake.CakeFlavor(json.cakes[i].Cake);
+			cake.IcingFlavor(json.cakes[i].Icing);
+			cake.Decoration(this.Decorations()[json.cakes[i].Decoration - 1]);
+			this.Cupcakes.push(cake);
+		}
 	}
 }
 var vm = new GlobalVM();
+vm.LoadJSON(CupcakesJSON);
 
 ko.bindingHandlers.flavor = {
 	update: function(element, valueAccessor, allBindingsAccessor) {

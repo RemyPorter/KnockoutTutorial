@@ -50,7 +50,7 @@
 				<tr data-bind="event: { mouseover: $root.PreviewCake, mouseout: $root.StopPreview}"> 
 					<td><span data-bind="text: CakeFlavor"></span></td>
 					<td><span data-bind="text: IcingFlavor"></span></td>
-					<td><span data-bind="text: Decoration().Name"></span></td>
+					<td><span data-bind="text: Decoration().Name()"></span></td>
 					<td><a href="#" data-bind="click: $parent.RemoveCake">Remove</a></td>
 				</tr>
 			</tbody>
