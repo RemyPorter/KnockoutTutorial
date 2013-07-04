@@ -43,7 +43,7 @@ th {
 	overflow: scroll;
 	border-bottom-left-radius: 8px
 }
-aside {
+figure, aside {
 	background-color: rgba(97, 183, 207, 0.25);
 	border-radius: 0px 0px 8px 0px;
 	height: 600px;
