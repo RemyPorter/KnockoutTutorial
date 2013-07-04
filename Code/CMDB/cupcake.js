@@ -1,7 +1,7 @@
 
 var CupcakesJSON = {
 	cakes: [
-		{Cake: "Bacon", Icing: "Chocolate", Decoration: 1}
+		{Cake: "Chocolate", Icing: "Vanilla", Decoration: 1}
 	]
 }
 var CupcakeVM = function()  {
@@ -71,13 +71,15 @@ var GlobalVM = function() {
 	}
 
 	this.LoadJSON = function(json) {
-		for (var i = 0; i < json.cakes.length; i++) {
-			var cake = new CupcakeVM();
-			cake.CakeFlavor(json.cakes[i].Cake);
-			cake.IcingFlavor(json.cakes[i].Icing);
-			cake.Decoration(this.Decorations()[json.cakes[i].Decoration - 1]);
-			this.Cupcakes.push(cake);
-		}
+		this.Cupcakes(
+			ko.utils.arrayMap(json.cakes, function(c) {
+				var cake = new CupcakeVM();
+				cake.CakeFlavor(c.Cake);
+				cake.IcingFlavor(c.Icing);
+				cake.Decoration(self.Decorations()[c.Decoration - 1]);
+				return cake;
+			})
+		);
 	}
 }
 var vm = new GlobalVM();
