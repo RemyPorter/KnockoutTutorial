@@ -1,0 +1,62 @@
+<html>
+	<head><title>Cupcake Management Database</title>
+		<script type="text/javascript" src="../knockout-2.2.1.js"></script>
+		<script type="text/javascript" src="cupcake.js"></script>
+		<link rel="stylesheet" href="CMDB.css" type="text/css" />
+	</head>
+<body>
+	<header>
+		<h1>CMDB</h1>
+		<em>Cupcake Management DataBase</em>
+	</header>
+	<section id="KnockoutCupcake">
+		<div class="cake-builder" data-bind="with: NewCake"> 
+			<span style="width:33%">
+				<label for="NewCakeFlavor">Cake:</label>
+					<select id="NewCakeFlavor" data-bind="optionsCaption:'Select a flavor', options: $root.Flavors, value: CakeFlavor"></select> 
+			</span>
+			<span data-bind="visible: CakeFlavor() != null"> 
+				<label for="NewIcingFlavor">Icing:</label>
+					<select id="NewIcingFlavor" data-bind="optionsCaption:'Select a flavor', options: $root.Flavors, value: IcingFlavor"></select>
+			</span>
+			<span data-bind="visible: IcingFlavor() != null && CakeFlavor() != null">
+				<label for="NewDecoration">Decoration:</label>
+					<select id="NewDecoration" data-bind="optionsCaption:'Select a decoration', options: $root.Decorations, optionsText: 'Name', value: Decoration"></select>
+			</span>
+			<button data-bind="click: $parent.AddCake, enable: $root.CanAdd">Add Cake</button>
+		</div>
+		<div class="cakes">
+			<table id="cake-display">
+				<!-- only show a list if we have a list! -->
+				<!-- ko if: Cupcakes().length > 0 -->
+				<thead>
+					<th>Cake</th>
+					<th>Icing</th>
+					<th>Decoration</th>
+					<th></th>
+				</thead>
+				<tbody data-bind="foreach: Cupcakes"> <!-- remember, foreach sets the binding context -->
+					<tr> 
+						<td><span data-bind="text: CakeFlavor"></span></td>
+						<td><span data-bind="text: IcingFlavor"></span></td>
+						<td><span data-bind="text: Decoration().Name()"></span></td>
+						<td><a href="#" data-bind="click: $parent.RemoveCake">Remove</a></td>
+					</tr>
+				</tbody>
+				<!-- /ko -->
+				<!-- ko ifnot: Cupcakes().length > 0 -->
+				<tbody>
+					<tr>
+						<th>No cupcakes yet.<br />
+						<img src="../Images/sad.svg" /></th>
+					</tr>
+				</tbody>
+				<!-- /ko -->
+			</table>
+		</div>
+	</section>
+</body>
+<script type="text/javascript">
+	ko.applyBindings(vm, document.getElementById("KnockoutCupcake"));
+</script>
+</html>

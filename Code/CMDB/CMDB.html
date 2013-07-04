@@ -46,6 +46,12 @@
 		<div class="cakes">
 		<table id="cake-display">
 			<!-- ko if: Cupcakes().length > 0 -->
+			<thead>
+				<th>Cake</th>
+				<th>Icing</th>
+				<th>Decoration</th>
+				<th></th>
+			</thead>
 			<tbody data-bind="foreach: Cupcakes"> 
 				<tr data-bind="event: { mouseover: $root.PreviewCake, mouseout: $root.StopPreview}"> 
 					<td><span data-bind="text: CakeFlavor"></span></td>
@@ -55,7 +61,7 @@
 				</tr>
 			</tbody>
 			<!-- /ko -->
-			<!-- ko if: Cupcakes().length == 0 -->
+			<!-- ko ifnot: Cupcakes().length > 0 -->
 			<tbody>
 				<tr>
 					<th>No cupcakes yet.<br />

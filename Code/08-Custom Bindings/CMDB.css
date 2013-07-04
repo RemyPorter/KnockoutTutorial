@@ -1,0 +1,61 @@
+.cake-display {
+	position: relative;
+}
+.cake-display > li {
+	position: relative;
+	list-style-type: none;
+}
+.cake-display > li.decoration {
+	z-index: 100;
+}
+.cake-display > li.icing {
+	top: -269px;
+}
+.cake-display > li.cake {
+	top: -300px;
+}
+tr:nth-child(odd) {
+	background-color: #37DE6A;
+	border:1px solid #37DE6A;
+}
+tr {
+	background-color: #FFBA73;
+	border:1px solid #FFBA73;
+}
+th {
+	background-color: rgba(97, 183, 207, 0.95);
+}
+.cake-builder {
+	padding-bottom: 32pt;
+	background-color: #FFA040;
+	border-bottom: 2pt solid #025167;
+	margin-right:40%;
+	padding-left: 4pt;
+}
+#cake-display {
+	float: left;
+	width: 100%;
+}
+.cakes {
+	background-color: rgba(255, 160, 65, 0.25);
+	width: 60%;
+	height: 533px;
+	overflow: scroll;
+	border-bottom-left-radius: 8px
+}
+aside {
+	background-color: rgba(97, 183, 207, 0.25);
+	border-radius: 0px 0px 8px 0px;
+	height: 600px;
+	min-width: 320px;
+	width: 40%;
+}
+header {
+	padding-bottom: 32pt;
+	text-align: right;
+	font-family: helvetica;
+	background-color: #61B7CF;
+	border-radius: 8px 8px 0px 0px;
+	padding-right: 18pt;
+	border-bottom: 2pt solid #025167;
+}

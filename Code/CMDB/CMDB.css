@@ -22,6 +22,9 @@ tr {
 	background-color: #FFBA73;
 	border:1px solid #FFBA73;
 }
+th {
+	background-color: rgba(97, 183, 207, 0.95);
+}
 .cake-builder {
 	padding-bottom: 32pt;
 	background-color: #FFA040;
