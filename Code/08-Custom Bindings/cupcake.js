@@ -55,21 +55,6 @@ var GlobalVM = function() {
 		self.StopPreview();
 	}
 
-	this.previewTimeout = null;
-	this.PreviewCake = function(cake) {
-		if (self.previewTimeout) {
-			clearTimeout(self.previewTimeout);
-			self.previewTimeout = null;
-		}
-		self.ViewCake(cake);
-	}
-
-	this.StopPreview = function() {
-		self.previewTimeout = setTimeout(function() {
-			self.ViewCake(self.NewCake());
-		}, 300);
-	}
-
 	this.LoadJSON = function(json) {
 		this.Cupcakes(
 			ko.utils.arrayMap(json.cakes, function(c) {
@@ -86,9 +71,27 @@ var vm = new GlobalVM();
 vm.LoadJSON(CupcakesJSON);
 
 ko.bindingHandlers.flavor = {
+	init: function(element) {
+		//we're using this binding to control what image is displayed
+		//make sure it's actually applied to an image!
+		if (! element.nodeName == "IMG") {
+			throw "This binding only applies to images."
+		}
+	},
+	/* 
+		element: the DOM element this is bound to.
+		valueAccessor: a function which returns the observable or the underlying value
+		allbindingsAccessor: a function which returns ALL binding keywords applied to this DOM element
+
+		You can use allBindingsAccessor to set up extra parameters, or even manipulate
+		the behavior of other KnockoutBindings
+	*/
 	update: function(element, valueAccessor, allBindingsAccessor) {
 		var valueWrapped = valueAccessor(); var bindings = allBindingsAccessor();
-		var value = ko.utils.unwrapObservable(valueWrapped);
+		var value = ko.utils.unwrapObservable(valueWrapped); //this may or may not be an observable, so let's unwrap it
+		//note: here we expect other binding parameters
+		//when we apply this binding, it should look like this:
+		// data-bind="flavor: flavorProp, type: 'icing'""
 		var imageRoot = bindings.imageRoot || "../Images/";
 		var imageType = bindings.type || "cake";
 		if (value) {
@@ -101,6 +104,11 @@ ko.bindingHandlers.flavor = {
 }
 
 ko.bindingHandlers.decoration = {
+	init: function(element) {
+		if (! element.nodeName == "IMG") {
+			throw "This binding only applies to images."
+		}
+	},
 	update: function(element, valueAccessor, allBindingsAccessor) {
 		var deco = ko.utils.unwrapObservable(valueAccessor());
 		var bindings = allBindingsAccessor();

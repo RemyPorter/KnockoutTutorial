@@ -86,6 +86,11 @@ var vm = new GlobalVM();
 vm.LoadJSON(CupcakesJSON);
 
 ko.bindingHandlers.flavor = {
+	init: function(element) {
+		if (! element.nodeName == "IMG") {
+			throw "This binding only applies to images."
+		}
+	},
 	update: function(element, valueAccessor, allBindingsAccessor) {
 		var valueWrapped = valueAccessor(); var bindings = allBindingsAccessor();
 		var value = ko.utils.unwrapObservable(valueWrapped);
@@ -101,6 +106,11 @@ ko.bindingHandlers.flavor = {
 }
 
 ko.bindingHandlers.decoration = {
+	init: function(element) {
+		if (! element.nodeName == "IMG") {
+			throw "This binding only applies to images."
+		}
+	},
 	update: function(element, valueAccessor, allBindingsAccessor) {
 		var deco = ko.utils.unwrapObservable(valueAccessor());
 		var bindings = allBindingsAccessor();
