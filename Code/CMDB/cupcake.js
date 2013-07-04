@@ -28,6 +28,7 @@ var GlobalVM = function() {
 		{Id: ko.observable(4), Name: ko.observable("Plastic Mustache"), tag: "mustache"}]);
 	this.Cupcakes = ko.observableArray([]);
 	this.NewCake = ko.observable(new CupcakeVM());
+	this.ViewCake = ko.observable(this.NewCake());
 
 	var self = this;
 	//ko.computed sees that this depends on observables
@@ -46,6 +47,21 @@ var GlobalVM = function() {
 
 	this.RemoveCake = function(cake) {
 		self.Cupcakes.splice(self.Cupcakes.indexOf(cake), 1);
+	}
+
+	this.previewTimeout = null;
+	this.PreviewCake = function(cake) {
+		if (self.previewTimeout) {
+			clearTimeout(self.previewTimeout);
+			self.previewTimeout = null;
+		}
+		self.ViewCake(cake);
+	}
+
+	this.StopPreview = function() {
+		self.previewTimeout = setTimeout(function() {
+			self.ViewCake(self.NewCake());
+		}, 500);
 	}
 }
 var vm = new GlobalVM();
