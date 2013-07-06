@@ -4,7 +4,7 @@ This is a collection of slides and code samples which will guide the user throug
 
 This is intended to be an hour-long presentation, it is not a "follow-along" guide.
 
-The HTML version of the slides is [Knockout/index.html](Knockout/index.html).
+The PDF version of the slides is [Knockout.pdf](Knockout.pdf).
 
 The presentation and the code use a variety of images which I did not create. I have made derivatives of some of them for the purpose of illustrating my application. They are as follows:
 
